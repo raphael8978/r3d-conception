@@ -1,0 +1,904 @@
+/* --- CONFIGURATION GÉNÉRALE --- */
+:root {
+    --rouge: #e60000;
+    --noir: #0a0a0a;
+    --gris-sombre: #121212;
+    --gris-bordure: #252525;
+    --blanc: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--noir);
+    color: var(--blanc);
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+
+/* --- HEADER GÉNÉRAL --- */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 15px 5%;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+/* --- ACCUEIL : LOGO À GAUCHE --- */
+body.accueil header {
+    justify-content: flex-start; 
+}
+
+/* --- AUTRES PAGES : LOGO À DROITE --- */
+/* C'est ici qu'on force le logo à droite sur tes pages produits */
+body:not(.accueil) header {
+    justify-content: flex-end; 
+}
+
+/* --- STYLE DU LOGO --- */
+.main-logo {
+    height: 40px !important; /* Taille propre */
+    width: auto;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: multiply !important; /* <--- CHANGE ÇA (Multiply au lieu de Screen) */
+}
+
+/* --- BOUTON RETOUR --- */
+/* Pour que le bouton retour reste bien à gauche pendant que le logo est à droite */
+.back-link {
+    position: absolute;
+    left: 5%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* --- AJUSTEMENT BANDEAU (Banderole) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* S'assure que la bannière prend toute la hauteur */
+    overflow: hidden;
+}
+
+/* --- HERO (Banderole Réduite et Pleine Largeur) --- */
+.hero {
+    align-items: center;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo/photo01.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    width: 100%;
+    /* On enlève "Site Raphaël" et on met ../ pour sortir du dossier css */
+}
+
+.hero h1 { 
+    color: white;
+    font-size: clamp(3rem, 8vw, 6rem); 
+    font-weight: 900;
+    margin: 0;
+    text-align: center;
+    text-shadow: 4px 4px 0px var(--rouge);
+    text-transform: uppercase;
+}
+
+/* --- BARRE DE NAVIGATION PRINCIPALE --- */
+.filter-section {
+    align-items: center;
+    background-color: #111; /* Fond noir */
+    border-bottom: 2px solid #e60000; /* Ligne rouge R3D */
+    display: flex;
+    gap: 30px; /* Espace entre chaque bouton */
+    justify-content: center; /* Centre tout le menu */
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- LE MENU DÉROULANT --- */
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-btn {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+    border-color: #e60000;
+}
+
+.dropdown-content {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 220px;
+    border: 1px solid #333;
+    z-index: 2000; /* Très élevé pour passer devant les photos */
+    top: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.8);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Apparaît au survol */
+}
+
+/* --- LIENS DANS LE MENU ET DANS LA BARRE --- */
+.drop-link, .nav-item {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.drop-link {
+    border-bottom: 1px solid #222;
+    display: block;
+    padding: 15px 20px;
+}
+
+.drop-link:hover {
+    background-color: #e60000;
+    padding-left: 25px; /* Petit effet de mouvement */
+}
+
+.nav-item:hover {
+    color: #e60000;
+}
+
+/* --- ADAPTATION MOBILE --- */
+@media (max-width: 850px) {
+    .filter-section {
+        flex-direction: column; /* On empile les boutons sur téléphone */
+        gap: 15px;
+    }
+}
+
+/* --- CONTENU & PRODUITS (AGRANDIS) --- */
+.container { 
+    margin: 0 auto; 
+    max-width: 1200px; /* Un peu plus large pour accueillir de plus gros cadres */
+    padding: 40px 10%; 
+}
+
+.product-card-horizontal {
+    align-items: center;
+    background: var(--gris-sombre);
+    border: 1px solid var(--gris-bordure);
+    border-radius: 12px; /* Coins un peu plus arrondis pour le style */
+    display: flex; 
+    margin-bottom: 25px;
+    padding: 30px; /* Plus d'espace interne */
+    transition: 0.3s;
+}
+
+/* --- TAILLE DES PHOTOS (ACCUEIL & LISTES) --- */
+.product-placeholder, .product-image-container {
+    width: 280px;           /* Largeur */
+    height: 280px;          /* Même valeur que la largeur pour faire un carré */
+    margin-right: 40px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 15px;    /* L'arrondi que l'on voit sur ton image */
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.product-placeholder img, .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Coupe l'image pour qu'elle remplisse tout le carré sans se déformer */
+}
+
+/* FORCER CARRÉ - À LA FIN DU CSS */
+.product-placeholder,
+.product-image-container {
+    width: 160px !important;
+    height: 160px !important;  /* Carré parfait */
+    overflow: hidden !important;
+}
+
+.product-placeholder img,
+.product-image-container img,
+.product-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+
+.product-info h3 { 
+    font-size: 1.8rem; /* Titre un peu plus grand */
+    margin: 0; 
+    text-transform: uppercase;
+}
+
+.price { 
+    color: var(--rouge); 
+    font-size: 1.6rem; 
+    font-weight: bold; 
+    margin-top: 10px; 
+}
+
+/* --- FOOTER --- */
+footer {
+    border-top: 1px solid var(--gris-bordure);
+    color: #444;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Conteneur de l'image pour garder une taille fixe */
+.product-image-container {
+    background-color: #111; /* Fond noir en attendant le chargement */
+    border-radius: 4px;
+    flex-shrink: 0; /* Empêche l'image de s'écraser */
+    height: 100px;
+    margin-right: 30px;
+    overflow: hidden;
+    width: 150px;
+}
+
+/* L'image elle-même */
+.product-img {
+    height: 100%;
+    object-fit: cover; /* Recadre proprement l'image dans le rectangle */
+    width: 100%;
+}
+
+/* --- STYLE POUR LES LIENS PRODUITS --- */
+.product-link {
+    color: inherit;        /* Garde la couleur blanche du texte */
+    display: block;        /* Permet de cliquer sur TOUTE la zone de la carte */
+    margin-bottom: 20px;   /* Espace entre les produits */
+    text-decoration: none; /* Enlève le soulignement moche */
+}
+
+/* Effet visuel quand tu passes la souris sur le produit cliquable */
+.product-link:hover .product-card-horizontal {
+    background-color: #1e1e1e; /* Gris un peu plus clair */
+    border-color: var(--rouge); /* Bordure devient rouge */
+    transform: translateY(-2px); /* Petit effet de soulèvement */
+    transition: 0.2s ease;
+}
+
+/* --- STYLE PAGE PRODUIT --- */
+.product-page-body {
+    background-color: #0a0a0a; /* Fond bien noir */
+    margin: 0;
+    padding: 0;
+}
+
+/* Barre grise en haut */
+.top-bar {
+    align-items: center;
+    background-color: #1a1a1a; /* Gris foncé */
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5%;
+}
+
+.back-link {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.logo-white {
+    color: #ffffff; /* Logo tout blanc */
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.logo-white span { color: #e60000; } /* Point rouge conservé */
+
+/* Conteneur principal aéré */
+.product-main-container {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important;
+    padding-top: 110px !important; /* Pour passer sous la barre claire */
+    background-color: #000 !important;
+}
+
+/* Section Slider */
+.slider-section {
+    order: 0 !important; /* Arrive après le -1 */
+    position: relative !important;
+    width: 95% !important;
+    max-width: 550px !important;
+    height: 450px !important; /* Hauteur forcée pour ne pas que l'image disparaisse */
+    margin: 0 auto 30px auto !important;
+    display: block !important;
+}
+
+.slider {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.slide {
+    position: absolute !important; /* Superpose les images les unes sur les autres */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;  /* Remplit le cadre sans déformer la photo */
+    opacity: 0;                    /* Caché par défaut */
+    transition: opacity 0.5s ease;
+    display: block !important;
+}
+
+/* Force l'affichage de l'image qui a la classe "active" */
+.slide.active {
+    opacity: 1 !important;
+    z-index: 10 !important;
+}
+
+.arrow {
+    background: rgba(230, 0, 0, 0.6);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 20px 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.arrow:hover { background: #e60000; }
+
+.prev { 
+    border-radius: 0 5px 5px 0; 
+    left: 0; 
+}
+
+.next { 
+    border-radius: 5px 0 0 5px; 
+    right: 0; 
+}
+
+/* Section Infos */
+.info-section {
+    order: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    /* --- AJOUTE ÇA --- */
+    padding-left: 30px !important;  /* Espace à gauche */
+    padding-right: 30px !important; /* Espace à droite */
+    box-sizing: border-box !important; /* Très important pour que le padding ne dépasse pas */
+}
+
+.product-title-white {
+    order: -1 !important; /* Un chiffre négatif force la montée en première position */
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 25px !important;
+}
+
+.product-price-red {
+    color: #e60000;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.product-description-text h3 {
+    border-bottom: 1px solid #333;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.product-description-text p, .product-description-text li {
+    color: #cccccc; /* Gris clair pour la lecture */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.order-button {
+    background-color: #e60000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 40px;
+    padding: 20px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.order-button:hover { 
+    background-color: #ff0000; 
+    transform: translateY(-3px); 
+}
+
+/* Adaptabilité Mobile */
+@media (max-width: 900px) {
+    .product-main-container { 
+        flex-direction: column; 
+        padding: 30px 5%; 
+    }
+    .slider-section { height: 350px; }
+}
+
+/* Style spécifique pour les CGV */
+.date-update {
+    color: #888;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.warning {
+    background-color: rgba(230, 0, 0, 0.1);
+    border-left: 4px solid #e60000;
+    color: #fff;
+    padding: 15px;
+}
+
+.text-content article {
+    margin-bottom: 40px;
+}
+
+.text-content ol {
+    padding-left: 20px;
+}
+
+.text-content ol li {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.back-home {
+    border: none !important;
+    color: #888 !important;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+/* --- HEADER (Commun à toutes les pages) --- */
+header {
+    align-items: center;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+
+.logo {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.logo span { color: #e60000; }
+
+.lang {
+    color: #888;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+
+/* --- BARRE DE RETOUR (SOUS LE HEADER) --- */
+.breadcrumb {
+    background-color: #111;
+    color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    padding: 10px 5%;
+    text-transform: uppercase;
+}
+
+.breadcrumb a {
+    color: #e60000;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.container-simple {
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 850px;
+    /* On réduit ici pour faire remonter le titre */
+    padding: 120px 20px 80px 20px; 
+}
+
+.header-simple {
+    align-items: center;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between; /* Pousse les éléments aux extrémités */
+    padding: 15px 5%;
+    position: fixed; /* Reste en haut au scroll */
+    top: 0;
+    width: 100%;
+    z-index: 2000;
+}
+
+/* Style du lien Retour */
+.header-back a {
+    color: #888;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.header-back a:hover {
+    color: #e60000;
+}
+
+/* Style du Logo */
+.header-simple .logo {
+    font-size: 1.8rem;
+}
+
+.header-simple .logo a {
+    color: white;
+    text-decoration: none;
+}
+
+/* --- STYLES SPECIFIQUES LIVRAISON --- */
+/* Encadré Offre Gratuite */
+.info-box.offer {
+    background-color: rgba(230, 0, 0, 0.1);
+    border: 2px dashed #e60000;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    padding: 20px;
+    text-align: center;
+}
+
+.info-box .icon { 
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+}
+
+/* Transporteurs */
+.shipping-methods {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
+}
+
+.method {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.method strong { 
+    color: #e60000; 
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+/* Étapes de commande */
+.order-steps {
+    background: #111;
+    border-left: 4px solid #e60000;
+    border-radius: 8px;
+    margin-top: 40px;
+    padding: 30px;
+}
+
+.step {
+    align-items: center;
+    display: flex;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.step span {
+    align-items: center;
+    background: #e60000;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 25px;
+    justify-content: center;
+    margin-right: 15px;
+    width: 25px;
+}
+
+/* Ajustement mobile pour les transporteurs */
+/* Uniquement pour les écrans de téléphone (moins de 768px) */
+@media (max-width: 768px) {
+    /* On cible la boîte qui contient l'image et le texte sur l'accueil */
+    .product-card, .category-item, [class*="item"], [class*="card"] {
+        display: flex !important;
+        flex-direction: column !important; /* Force le nom à aller SOUS la photo */
+        align-items: center !important;
+        text-align: center !important;
+        padding: 15px !important;
+    }
+
+    /* On s'assure que l'image ne soit plus écrasée sur le côté */
+    .product-card img, .category-item img, [class*="item"] img {
+        width: 100% !important;
+        max-width: 280px !important; /* Taille de l'image sur mobile */
+        margin: 0 0 15px 0 !important; /* Marge en bas pour décoller le texte */
+    }
+
+    /* On centre le texte et le prix */
+    .product-card div, .category-item div, .product-info {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+/* --- STYLES SPECIFIQUES CONCEPTION 3D --- */
+.hero-text-3d {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.hero-text-3d h2 {
+    color: #e60000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.how-to-box {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 40px;
+    position: relative;
+}
+
+.how-to-box::before {
+    content: '3D';
+    color: rgba(255, 255, 255, 0.03);
+    font-size: 8rem;
+    font-weight: 900;
+    pointer-events: none;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.custom-list {
+    list-style: none;
+    margin: 25px 0;
+    padding: 0;
+}
+
+.custom-list li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.custom-list li::before {
+    color: #e60000;
+    content: '→';
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+}
+
+.cta-3d {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* Bouton d'action */
+.contact-btn-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-red {
+    background-color: #e60000;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-red:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
+
+.materials-info {
+    border-top: 1px solid #333;
+    margin-top: 50px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.materials-info span {
+    color: #888;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Centrer le bouton dans la page */
+.contact-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+/* Style du bouton */
+.btn-contact {
+    background-color: #e60000; /* Ton rouge R3D */
+    border: none;
+    border-radius: 4px;        /* Coins légèrement arrondis */
+    color: white !important;   /* Force le texte en blanc */
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 15px 35px;
+    text-decoration: none;     /* Enlève le soulignement */
+    text-transform: uppercase;
+    transition: all 0.3s ease; /* Animation fluide */
+}
+
+/* Effet au survol (Hover) */
+.btn-contact:hover {
+    background-color: #ff0000; /* Rouge plus clair */
+    box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4); /* Petite lueur rouge */
+    transform: scale(1.05);    /* Grossit très légèrement */
+}
+
+/* --- PAGE PRODUIT DÉTAILS --- */
+.product-specs-short {
+    border-left: 3px solid #e60000;
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+.product-description-text h3 {
+    border-bottom: 1px solid #333;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    margin: 30px 0 15px 0;
+    padding-bottom: 5px;
+}
+
+.product-description-text p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.key-points {
+    list-style: none;
+    padding: 0;
+}
+
+.key-points li {
+    color: #eee;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.key-points li::before {
+    color: #e60000;
+    content: '✓';
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+}
+
+/* On s'assure que le bouton de contact ressort bien */
+.contact-container {
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+/* Uniquement sur les pages produits */
+body:not(.accueil) header {
+    position: fixed !important; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px !important;
+    background-color: #f5f5f5 !important; /* Barre claire */
+    display: flex !important;
+    justify-content: flex-end !important; /* Pousse le logo à droite */
+    align-items: center !important;
+    padding: 0 5% !important;
+    z-index: 10000;
+    border-bottom: 1px solid #ddd;
+}
+body:not(.accueil) .back-link {
+    position: absolute !important;
+    left: 5% !important;
+    color: #000000 !important; /* Texte noir */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.product-main-container {
+    display: flex !important;
+    flex-direction: column !important; /* Empilement vertical */
+    align-items: center !important;
+    padding-top: 100px !important; /* Descend sous la barre claire */
+    background-color: #000;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission 450 YZF - R3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page-body">
+
+<header class="header-produit">
+    <a href="index.html" class="back-link">← RETOUR</a>
+    <div class="logo-container">
+        <img src="photo/logo.png" alt="Logo R3D" class="main-logo">
+    </div>
+</header>
+
+    <main class="product-main-container">
+    <h1 class="product-title-white">ADMISSION 450 YZF - PERFORMANCE</h1>
+
+    <div class="slider-section">
+        <div class="slider">
+            <img src="photo/admission1.jpeg" class="slide active">
+            <img src="photo/admission2.jpeg" class="slide">
+            <img src="photo/admission3.jpeg" class="slide">
+            <img src="photo/admission4.png" class="slide">
+        </div>
+        <button class="arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="arrow next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="info-section">
+        <p class="product-price-red">175,00 €</p>
+            
+            <div class="product-specs-short">
+                <strong>Structure composite Nylon/Carbone • Intérieur Vitrifié • Vendu avec son Cache de lavage</strong>
+            </div>
+
+            <div class="product-description-text">
+                <h3>DESCRIPTION TECHNIQUE</h3>
+                <p>
+                    L'optimisation moteur passe par les détails. Notre admission pour YZ450F propose une géométrie interne spécifique de type <strong>"Venturi"</strong>, développée pour accélérer la colonne d'air et maximiser le remplissage à haut régime.
+                </p>
+                <p>
+                    Réalisée en matériaux composites avancés, cette pièce allie l'esthétique brute du Carbone mat à l'extérieur, et une finition glacée "zéro friction" à l'intérieur. Plus qu'une simple pièce, c'est une solution technique complète : isolante thermiquement pour garder l'air frais, et structurellement renforcée pour endurer les contraintes mécaniques les plus fortes.
+                </p>
+
+                <h3>POURQUOI CHOISIR L'ADMISSION R3D ?</h3>
+                <p><strong>Structure Composite PAHT-CF :</strong> Fabriquée en Nylon chargé à 15% de Fibres de Carbone, la pièce subit un cycle de recuit thermique de 6 heures. Résultat : Une structure indéformable qui résiste à plus de 180°C.</p>
+                <p><strong>Technologie de Flux "Miroir" :</strong> L'intérieur bénéficie d'un traitement de surface exclusif à la résine Époxy céramique. Cette vitrification supprime les frictions de l'air et rend la paroi lisse et imperméable.</p>
+                <p><strong>Géométrie Venturi Optimisée :</strong> Le design en forme de trompette a été validé par simulation de flux (CFD) pour maximiser le remplissage du cylindre.</p>
+
+                <h3>POINTS CLÉS</h3>
+                <ul class="key-points">
+                    <li>Gain de performance : Effet Venturi et surface interne zéro-friction.</li>
+                    <li>Fiabilité Totale : Résistance thermique > 170°C (Traitement recuit).</li>
+                    <li>Isolation Thermique : Le carbone garde l'air frais.</li>
+                    <li>Montage Plug & Play : Compatible avec l'injection du 450 yzf.</li>
+                    <li>Design Sécurisé : Gorge de maintien profonde pour le filtre à air.</li>
+                </ul>
+            </div>
+
+            <div class="contact-container">
+                <a href="mailto:r3d-conception@outlook.fr?subject=Commande Admission 450 YZF" class="btn-contact">
+                    CONTACTEZ-MOI POUR COMMANDER
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>

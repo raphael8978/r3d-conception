@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintient faisceau</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page-body">
+
+    <header class="header-produit">
+    <a href="index.html" class="back-link">← RETOUR</a>
+    <div class="logo-container">
+        <img src="photo/logo.png" alt="Logo R3D" class="main-logo">
+    </div>
+</header>
+
+    <main class="product-main-container">
+	<h1 class="product-title-white">MAINTIEN FAISCEAU</h1>
+        <div class="slider-section">
+            <div class="slider">
+                <img src="photo/mf.jpg" class="slide active">
+				<img src="photo/mf2.jpg" class="slide active">
+            </div>
+            <button class="arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="arrow next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="info-section">
+            
+            <p class="product-price-red">3,00 €</p>
+            
+            <div class="product-description-text">
+                <p>Ce guide permet de sécuriser proprement votre faisceau électrique le long du châssis. Idéal pour remettre au propre un faisceau baladeur.</p>
+                
+                <h3>POINTS FORTS</h3>
+                <ul class="key-points">
+                    <li><strong>Compatibilité :</strong> S'adapte sur tous les tubes de châssis de 25mm de diamètre.</li>
+                    <li><strong>Protection :</strong> Imprimé en TPU (matière souple), il absorbe les vibrations et évite l'usure des câbles.</li>
+                    <li><strong>Résistance :</strong> Conçu pour encaisser les chocs sans casser.</li>
+                    <li><strong>Installation :</strong> Passants intégrés pour fixation rapide. <strong>Scratchs fournis.</strong></li>
+                </ul>
+            </div>
+
+            <div class="contact-container">
+                <a href="mailto:r3d-conception@outlook.fr?subject=Commande Maintien Faisceau" class="btn-contact">
+                    CONTACTEZ-MOI PAR MAIL
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>

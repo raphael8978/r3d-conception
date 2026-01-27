@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection de suspension EXT - R3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page-body">
+
+    <header class="header-produit">
+    <a href="index.html" class="back-link">← RETOUR</a>
+    <div class="logo-container">
+        <img src="photo/logo.png" alt="Logo R3D" class="main-logo">
+    </div>
+</header>
+
+    <main class="product-main-container">
+    <h1 class="product-title-white">Protection de suspension EXT</h1>
+
+    <div class="slider-section">
+        <div class="slider">
+            <img src="photo/ps1.jpeg" class="slide active">
+            <img src="photo/ps2.jpeg" class="slide">
+        </div>
+        <button class="arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="arrow next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="info-section">
+        <p class="product-price-red">45,00 €</p>
+            
+            <div class="product-specs-short">
+                <strong>Plastique technique TPU souple • Conception exclusive EXT • Visserie intégrée</strong>
+            </div>
+
+            <div class="product-description-text">
+                <h3>DESCRIPTION</h3>
+                <p>
+                    Ces protections ont été spécialement conçues pour s'adapter parfaitement à vos amortisseurs <strong>EXT</strong>. Elles forment un bouclier efficace contre les projectiles (pierres, terre) pour garder vos bonbonnes intactes durablement.
+                </p>
+                <p>
+                    Leur design spécifique protège la zone la plus exposée aux chocs tout en assurant le refroidissement nécessaire grâce aux <strong>aérations intégrées</strong>.
+                </p>
+                <p>
+                    Le matériau a été rigoureusement sélectionné pour sa capacité à absorber les impacts sans se briser, garantissant une protection fiable même dans les conditions les plus extrêmes.
+                </p>
+
+                <h3>POINTS CLÉS</h3>
+                <ul class="key-points">
+                    <li>Fabrication en plastique technique souple (TPU) haute absorption.</li>
+                    <li>Conception exclusive pour une intégration parfaite sur amortisseurs EXT.</li>
+                    <li>Fixation sécurisée par visserie intégrée (fournie).</li>
+                    <li>Ventilation optimisée pour ne pas altérer le fonctionnement thermique.</li>
+                    <li>Résistance aux hydrocarbures et aux UV.</li>
+                </ul>
+            </div>
+
+            <div class="contact-container">
+                <a href="mailto:r3d-conception@outlook.fr?subject=Commande Protections EXT" class="btn-contact">
+                    CONTACTEZ-MOI POUR COMMANDER
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>

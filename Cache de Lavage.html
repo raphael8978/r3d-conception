@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CACHE DE LAVAGE POUR 450 YFZR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page-body">
+
+    <header class="header-produit">
+    <a href="index.html" class="back-link">← RETOUR</a>
+    <div class="logo-container">
+        <img src="photo/logo.png" alt="Logo R3D" class="main-logo">
+    </div>
+</header>
+
+    <main class="product-main-container">
+	<h1 class="product-title-white">CACHE DE LAVAGE - 450 YFZR</h1>
+        <div class="slider-section">
+            <div class="slider">
+                <img src="photo/clyfzr.jpeg" class="slide active">
+            </div>
+            <button class="arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="arrow next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="info-section">
+            
+            <p class="product-price-red">20,00 €</p>
+            
+            <div class="product-specs-short">
+                <strong>Sur-mesure admission RP Race • Étanchéité garantie • Verrouillage par collier</strong>
+            </div>
+
+            <div class="product-description-text">
+                <h3>DESCRIPTION</h3>
+                <p>
+                    Ce cache a été conçu sur mesure pour s'adapter parfaitement à l'admission <strong>RP Race</strong> de votre 450 YFZR. 
+                </p>
+                <p>
+                    Il s'emboîte précisément sur le manchon pour garantir une <strong>étanchéité totale</strong> de votre moteur lors du nettoyage haute pression. C'est l'accessoire indispensable pour préserver votre mécanique des infiltrations d'eau.
+                </p>
+
+                <h3>UTILISATION & SÉCURITÉ</h3>
+                <p><strong>Installation simple :</strong> Le cache s'emboîte naturellement sur l'entrée d'air et se verrouille à l'aide d'un collier standard pour une tenue parfaite durant toute l'opération de lavage.</p>
+                <p><strong>Protection maximale :</strong> Conçu pour stopper net les projections d'eau, même avec l'usage d'un nettoyeur haute pression.</p>
+
+                <h3>POINTS CLÉS</h3>
+                <ul class="key-points">
+                    <li>Conçu spécifiquement pour l'admission RP Race (YFZR).</li>
+                    <li>S'emboîte et se verrouille en quelques secondes.</li>
+                    <li>Empêche toute infiltration d'eau dans l'admission.</li>
+                    <li>Matériau résistant aux produits de lavage et hydrocarbures.</li>
+                </ul>
+            </div>
+
+            <div class="contact-container">
+                <a href="mailto:r3d-conception@outlook.fr?subject=Commande Cache Lavage YFZR" class="btn-contact">
+                    CONTACTEZ-MOI POUR COMMANDER
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>

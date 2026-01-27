@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support de plaque - R3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="product-page-body">
+
+    <header class="header-produit">
+    <a href="index.html" class="back-link">← RETOUR</a>
+    <div class="logo-container">
+        <img src="photo/logo.png" alt="Logo R3D" class="main-logo">
+    </div>
+</header>
+
+    <main class="product-main-container">
+	<h1 class="product-title-white">SUPPORT DE PLAQUE TYPE DRAPEAU</h1>
+        <div class="slider-section">
+            <div class="slider">
+                <img src="photo/sp1.jpeg" class="slide active">
+                <img src="photo/sp2.jpeg" class="slide">
+                <img src="photo/sp3.jpg" class="slide">
+                <img src="photo/sp4.jpg" class="slide">
+            </div>
+            <button class="arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="arrow next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="info-section">
+            
+            <p class="product-price-red">50,00 €</p>
+            
+            <div class="product-specs-short">
+                <strong>Plastique souple TPU • Anti-casse • Grip renforcé</strong>
+            </div>
+
+            <div class="product-description-text">
+                <h3>CE KIT COMPREND :</h3>
+                <ul class="key-points">
+                    <li>Support de plaque & Plaque arrière.</li>
+                    <li>Visserie complète.</li>
+                    <li>Joint de maintien.</li>
+                    <li>Gabarit 2D (pour découper votre kit déco parfaitement ajusté).</li>
+                </ul>
+
+                <h3>DESCRIPTION</h3>
+                <p>
+                    Le support de plaque <strong>R3D</strong> a été conçu spécifiquement pour la course : son positionnement ergonomique ne gêne absolument pas les mouvements du pilote.
+                </p>
+                <p>
+                    La plaque est imprimée en <strong>plastique souple (TPU)</strong> ce qui lui permet de plier sans jamais casser en cas d'accrochage ou de chute. Un joint spécifique est fourni pour assurer un grip parfait sur le Grab Bar et éviter toute rotation indésirable.
+                </p>
+
+                <article class="warning">
+                    <h3>COMPATIBILITÉ</h3>
+                    <p>Disponible pour Grab Bar <strong>Handy Racing</strong> et <strong>Drag'on</strong>.</p>
+                    <p>⚠️ <em>Merci de me préciser votre modèle de Grab Bar lors de la commande.</em></p>
+                </article>
+            </div>
+
+            <div class="contact-container">
+                <a href="mailto:r3d-conception@outlook.fr?subject=Commande Support de Plaque Drapeau" class="btn-contact">
+                    CONTACTEZ-MOI POUR COMMANDER
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            if (slides.length <= 1) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>
