@@ -925,6 +925,9 @@ body:not(.accueil) .back-link {
 }
 
 
+.product-section {
+    scroll-margin-top: 15vh; /* Le produit s'arrêtera à 15% du haut de l'écran */
+}
 
 
 
