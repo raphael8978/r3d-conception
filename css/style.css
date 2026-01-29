@@ -896,6 +896,17 @@ body:not(.accueil) .back-link {
     background-color: #000;
 }
 
+/* --- LE TRUC MAGIQUE : MODE COMPACT --- */
+/* Quand la barre a la classe "compact", on cache les liens textes */
+.filter-section.compact .nav-item {
+    display: none;
+}
+
+/* On réduit aussi un peu les marges pour que ce soit plus fin */
+.filter-section.compact {
+    gap: 0;
+    padding: 10px 0;
+}
 
 
 
