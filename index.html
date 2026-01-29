@@ -157,29 +157,37 @@
         © 2026 R3D - PERFORMANCE RACING PARTS
     </footer>
 
-	<script>
-    // Sélectionne tous les liens du menu déroulant
+<script>
     const links = document.querySelectorAll('.drop-link');
     const menu = document.querySelector('.dropdown-content');
+    const mainButton = document.querySelector('.dropdown-btn');
 
-    // Pour chaque lien, on ajoute une écoute du clic
+    // 1. Quand on clique sur un lien (produit), on force le menu à disparaître
     links.forEach(link => {
         link.addEventListener('click', () => {
-            // On cache le menu brutalement
-            menu.style.display = 'none';
-            
-            // On remet le style par défaut après une fraction de seconde
-            // pour qu'il puisse se rouvrir si on clique à nouveau dessus
-            setTimeout(() => {
-                menu.style.display = ''; 
-            }, 800);
+            menu.style.display = 'none'; // On le cache, et on ne met pas de timer pour le rallumer
         });
     });
+
+    // 2. Cette partie est INDISPENSABLE :
+    // Elle permet de "débloquer" le menu si tu cliques à nouveau sur le gros bouton principal.
+    // Sans ça, le menu resterait caché pour toujours.
+    if(mainButton) {
+        mainButton.addEventListener('click', () => {
+            menu.style.display = ''; // On enlève le blocage, le CSS reprend le relais
+        });
+        
+        // Pour être sûr sur mobile
+        mainButton.addEventListener('touchstart', () => {
+            menu.style.display = ''; 
+        });
+    }
 </script>
 	
 </body>
 
 </html>
+
 
 
 
