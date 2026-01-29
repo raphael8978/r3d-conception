@@ -909,8 +909,20 @@ body:not(.accueil) .back-link {
 }
 
 
-
-
+/* --- FORCER L'AFFICHAGE MOBILE --- */
+@media (max-width: 850px) {
+    /* Quand on descend, on cache brutalement les liens */
+    .filter-section.compact .nav-item {
+        display: none !important;
+    }
+    
+    /* On réduit la taille de la barre pour qu'elle soit toute fine */
+    .filter-section.compact {
+        padding: 5px 0 !important;
+        gap: 0 !important;
+        border-bottom: 2px solid #e60000; /* On garde la ligne rouge propre */
+    }
+}
 
 
 
