@@ -106,7 +106,7 @@ body:not(.accueil) header {
     gap: 30px; /* Espace entre chaque bouton */
     justify-content: center; /* Centre tout le menu */
     padding: 20px 0;
-    position: relative;
+    position: fixed;
     top: 0;
     z-index: 1000;
 }
@@ -895,6 +895,7 @@ body:not(.accueil) .back-link {
     padding-top: 100px !important; /* Descend sous la barre claire */
     background-color: #000;
 }
+
 
 
 
