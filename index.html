@@ -161,32 +161,39 @@
     const links = document.querySelectorAll('.drop-link');
     const menu = document.querySelector('.dropdown-content');
     const mainButton = document.querySelector('.dropdown-btn');
+    const navBar = document.querySelector('.filter-section');
 
-    // 1. Quand on clique sur un lien (produit), on force le menu à disparaître
+    // 1. GESTION DU CLIC (Fermeture du menu)
     links.forEach(link => {
         link.addEventListener('click', () => {
-            menu.style.display = 'none'; // On le cache, et on ne met pas de timer pour le rallumer
+            menu.style.display = 'none';
         });
     });
 
-    // 2. Cette partie est INDISPENSABLE :
-    // Elle permet de "débloquer" le menu si tu cliques à nouveau sur le gros bouton principal.
-    // Sans ça, le menu resterait caché pour toujours.
     if(mainButton) {
         mainButton.addEventListener('click', () => {
-            menu.style.display = ''; // On enlève le blocage, le CSS reprend le relais
+            menu.style.display = '';
         });
-        
-        // Pour être sûr sur mobile
         mainButton.addEventListener('touchstart', () => {
             menu.style.display = ''; 
         });
     }
+
+    // 2. GESTION DU SCROLL (Nouveau !)
+    // Dès qu'on descend de plus de 50 pixels, on active le mode "compact"
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navBar.classList.add('compact');
+        } else {
+            navBar.classList.remove('compact');
+        }
+    });
 </script>
 	
 </body>
 
 </html>
+
 
 
 
