@@ -163,7 +163,7 @@
     const mainButton = document.querySelector('.dropdown-btn');
     const navBar = document.querySelector('.filter-section');
 
-    // 1. GESTION DU CLIC (Fermeture du menu)
+    // 1. FERMER LE MENU AU CLIC
     links.forEach(link => {
         link.addEventListener('click', () => {
             menu.style.display = 'none';
@@ -174,15 +174,18 @@
         mainButton.addEventListener('click', () => {
             menu.style.display = '';
         });
+        // Ajout spécifique pour le tactile
         mainButton.addEventListener('touchstart', () => {
             menu.style.display = ''; 
         });
     }
 
-    // 2. GESTION DU SCROLL (Nouveau !)
-    // Dès qu'on descend de plus de 50 pixels, on active le mode "compact"
+    // 2. GESTION DU SCROLL (Version Mobile Compatible)
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        // Cette ligne marche sur tous les navigateurs (Chrome, Safari, Firefox mobile)
+        var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollPosition > 50) {
             navBar.classList.add('compact');
         } else {
             navBar.classList.remove('compact');
@@ -193,6 +196,7 @@
 </body>
 
 </html>
+
 
 
 
