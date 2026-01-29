@@ -157,7 +157,28 @@
         © 2026 R3D - PERFORMANCE RACING PARTS
     </footer>
 
+	<script>
+    // Sélectionne tous les liens du menu déroulant
+    const links = document.querySelectorAll('.drop-link');
+    const menu = document.querySelector('.dropdown-content');
+
+    // Pour chaque lien, on ajoute une écoute du clic
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            // On cache le menu brutalement
+            menu.style.display = 'none';
+            
+            // On remet le style par défaut après une fraction de seconde
+            // pour qu'il puisse se rouvrir si on clique à nouveau dessus
+            setTimeout(() => {
+                menu.style.display = ''; 
+            }, 100);
+        });
+    });
+</script>
+	
 </body>
 
 </html>
+
 
