@@ -867,7 +867,7 @@ header {
 
 /* Uniquement sur les pages produits */
 body:not(.accueil) header {
-    position: fixed !important; 
+    position: absolute !important; 
     top: 0;
     left: 0;
     width: 100%;
@@ -895,6 +895,7 @@ body:not(.accueil) .back-link {
     padding-top: 100px !important; /* Descend sous la barre claire */
     background-color: #000;
 }
+
 
 
 
